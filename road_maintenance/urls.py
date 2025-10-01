@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('_next/', include('django_nextjs.urls')),
     path('api/', include('customer_review.urls', namespace='customer_review')),
-    re_path(r'^(?!admin/).*', nextjs_frontend, name='frontend'),
+    re_path(r'^(?!admin/|api/|_next/).*', nextjs_frontend, name='frontend'),
 ]

@@ -193,7 +193,8 @@ class WorkItem(models.Model):
         ordering = ['work_order', 'id']
 
     def __str__(self) -> str:
-        return f"{self.operation_type.name} - {self.quantity} {self.operation_type.unit}"
+        order_ref = getattr(self.work_order, 'number', None) or self.work_order_id
+        return f"{order_ref} – {self.operation_type.name} ({self.quantity} {self.operation_type.unit})"
 
     def _compute_geom_via_postgis(self):
         if not self.road_section_id or not self.operation_type_id:

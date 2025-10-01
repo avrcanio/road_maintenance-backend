@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'roads',
     'operations',
     'activity',
+    'customer_review',
 ]
 
 MIDDLEWARE = [

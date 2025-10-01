@@ -1,0 +1,51 @@
+{% load static i18n l10n %}
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="utf-8">
+    <title>{% translate "Uređivanje geometrije" %}</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/ol@v7.2.2/ol.css">
+    <link rel="stylesheet" href="{% static 'gis/css/ol3.css' %}">
+    <link rel="stylesheet" href="{% static 'roads/css/fullscreen_map.css' %}">
+</head>
+<body>
+<div class="fullscreen-map-container">
+    <div id="{{ map_id }}_div_map" class="dj_map_wrapper fullscreen-map-wrapper">
+        <div id="{{ map_id }}" class="dj_map fullscreen-map"></div>
+        <span class="clear_features"><a href="">{% translate "Delete all Features" %}</a></span>
+    </div>
+    <div class="fullscreen-tools">
+        <div class="fullscreen-instructions">
+            <p>{% translate "Klikni na kartu za crtanje nove linije. Povuci točke za uređivanje postojećih." %}</p>
+            <p>{% translate "Drži SHIFT i klikni na točku za brisanje, ili koristi gumb za čišćenje." %}</p>
+        </div>
+        <div class="fullscreen-tool-buttons">
+            <button type="button" id="fullscreen-enable-draw" class="button">{% translate "Omogući crtanje" %}</button>
+            <button type="button" id="fullscreen-clear" class="button">{% translate "Obriši geometriju" %}</button>
+        </div>
+    </div>
+    <textarea id="{{ storage_field_id }}" class="vSerializedField required" name="{{ storage_field_name }}" hidden></textarea>
+    <div class="fullscreen-controls">
+        <button type="button" id="fullscreen-save" class="button button-primary">{% translate "Spremi i zatvori" %}</button>
+        <button type="button" id="fullscreen-cancel" class="button">{% translate "Odustani" %}</button>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/ol@v7.2.2/dist/ol.js"></script>
+<script src="{% static 'gis/js/OLMapWidget.js' %}"></script>
+<script src="{% static 'roads/js/fullscreen_map.js' %}"></script>
+<script>
+    window.initRoadSectionFullscreenMap({
+        fieldId: '{{ field_id }}',
+        moduleName: '{{ module_name }}',
+        storageFieldId: '{{ storage_field_id }}',
+        storageFieldName: '{{ storage_field_name }}',
+        mapId: '{{ map_id }}',
+        geomName: '{{ geom_name }}',
+        mapSrid: {{ map_srid|unlocalize }},
+        defaultLon: {{ default_lon|unlocalize }},
+        defaultLat: {{ default_lat|unlocalize }},
+        defaultZoom: {{ default_zoom|unlocalize }}
+    });
+</script>
+</body>
+</html>

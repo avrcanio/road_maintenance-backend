@@ -1,0 +1,5 @@
+# Core Django project dependencies
+Django==5.1.1
+psycopg[binary]==3.2.1
+
+# Add any additional app dependencies below

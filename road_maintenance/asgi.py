@@ -11,6 +11,8 @@ import os
 
 from django.core.asgi import get_asgi_application
 
+from django_nextjs.asgi import NextJsMiddleware
+
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'road_maintenance.settings')
 
-application = get_asgi_application()
+application = NextJsMiddleware(get_asgi_application())

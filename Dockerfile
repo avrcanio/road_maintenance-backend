@@ -12,6 +12,8 @@ RUN apt-get update \
        binutils \
        libproj-dev \
        gdal-bin \
+       nodejs \
+       npm \
     && rm -rf /var/lib/apt/lists/*
 
 # Install Python dependencies; copy only requirement manifests first for better caching

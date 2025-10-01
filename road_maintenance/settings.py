@@ -41,9 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.gis',
+    'django_nextjs',
+    'tailwind',
+    'theme',
     'customers',
     'projects',
     'roads',
+    'operations',
 ]
 
 MIDDLEWARE = [
@@ -137,6 +141,14 @@ STATIC_URL = '/static/'
 LOCALE_PATHS = [
     BASE_DIR / 'locale',
 ]
+
+# Next.js integration
+NEXTJS_SERVER_URL = os.getenv('NEXTJS_SERVER_URL', 'http://127.0.0.1:3000')
+NEXTJS_APP_DIR = BASE_DIR / 'frontend'
+NEXTJS_BUILD_DIR = NEXTJS_APP_DIR / '.next'
+
+TAILWIND_APP_NAME = 'theme'
+INTERNAL_IPS = ['127.0.0.1']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field

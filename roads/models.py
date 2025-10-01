@@ -13,7 +13,7 @@ class RoadSection(models.Model):
     length = models.DecimalField(
         _('Duljina (m)'),
         max_digits=12,
-        decimal_places=2,
+        decimal_places=0,
         blank=True,
         null=True,
     )
